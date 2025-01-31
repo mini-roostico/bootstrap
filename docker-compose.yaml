@@ -1,0 +1,17 @@
+services:
+  frontend-service:
+    platform: linux/amd64
+    image: ghcr.io/mini-roostico/web-frontend:master
+    container_name: web-frontend
+    hostname: web-frontend
+    restart: always
+    ports:
+      - "80:80"
+#    TODO: uncomment
+#    depends_on:
+#      web-backend:
+#        condition: service_healthy
+#    environment:
+#      <<: *common-variables
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
