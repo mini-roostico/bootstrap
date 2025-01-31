@@ -3,6 +3,21 @@ on:
   workflow_call:
   workflow_dispatch:
 jobs:
+  check-secrets:
+    runs-on: ubuntu-24.04
+    outputs:
+      run-with-secrets: ${{ steps.require-secrets.outputs.run-with-secrets }}
+    steps:
+      - name: Find if secrets are available
+        id: detect-secrets
+        uses: DanySK/are-secrets-available@1.0.0
+        with:
+          secrets: ${{ toJson(secrets) }}
+      - name: Set condition
+        id: require-secrets
+        run: |
+          echo "run-with-secrets=${{ steps.detect-secrets.outputs.has-secrets == 'true' && !github.event.repository.fork }}" >> $GITHUB_OUTPUT
+
   release:
     concurrency:
       # Only one release job at a time per branch, as only master releases.
@@ -10,10 +25,11 @@ jobs:
       group: release-${{ github.event.number || github.ref }}
     permissions: write-all
     runs-on: ubuntu-24.04
+    needs:
+      - check-secrets
     if: |
       always() &&
-      needs.check-secrets.outputs.run-with-secrets == 'true' &&
-      needs.check.result == 'success'
+      needs.check-secrets.outputs.run-with-secrets == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
