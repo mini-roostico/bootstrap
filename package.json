@@ -10,6 +10,6 @@
     "url": "https://github.com/mini-roostico/bootstrap/issues"
   },
   "devDependencies": {
-    "semantic-release-preconfigured-conventional-commits": "1.1.117"
+    "semantic-release-preconfigured-conventional-commits": "1.1.119"
   }
 }
