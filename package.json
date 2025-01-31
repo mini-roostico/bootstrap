@@ -1,0 +1,15 @@
+{
+  "name": "subjekt-bootstrap",
+  "description": "Simple configuration in order to initialize all the Subjekt services",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mini-roostico/bootstrap.git"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mini-roostico/bootstrap/issues"
+  },
+  "devDependencies": {
+    "semantic-release-preconfigured-conventional-commits": "1.1.117"
+  }
+}
