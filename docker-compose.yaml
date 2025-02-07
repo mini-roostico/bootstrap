@@ -1,4 +1,30 @@
 services:
+  auth:
+    platform: linux/amd64
+    image: ghcr.io/mini-roostico/api-web-auth:master
+    container_name: auth-service
+    hostname: auth-service
+    restart: always
+    ports:
+      - "8080:8080"
+#    environment:
+#      <<: *common-variables
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+
+  api:
+    platform: linux/amd64
+    image: ghcr.io/mini-roostico/api-web-api:master
+    container_name: api-service
+    hostname: api-service
+    restart: always
+    ports:
+      - "3000:3000"
+    #    environment:
+    #      <<: *common-variables
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/" ]
+
   frontend-service:
     platform: linux/amd64
     image: ghcr.io/mini-roostico/web-frontend:master
@@ -7,10 +33,12 @@ services:
     restart: always
     ports:
       - "80:80"
+    depends_on:
+      api:
+        condition: service_healthy
+      auth:
+        condition: service_healthy
 #    TODO: uncomment
-#    depends_on:
-#      web-backend:
-#        condition: service_healthy
 #    environment:
 #      <<: *common-variables
     healthcheck:
