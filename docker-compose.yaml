@@ -1,3 +1,9 @@
+x-common-variables: &common-variables
+  AUTH_HOST: auth-service
+  AUTH_PORT: 8080
+  API_HOST: api-service
+  API_PORT: 3000
+
 services:
   auth:
     platform: linux/amd64
@@ -5,8 +11,8 @@ services:
     container_name: auth-service
     hostname: auth-service
     restart: always
-#    environment:
-#      <<: *common-variables
+    environment:
+      <<: *common-variables
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/"]
 
@@ -16,8 +22,8 @@ services:
     container_name: api-service
     hostname: api-service
     restart: always
-    #    environment:
-    #      <<: *common-variables
+    environment:
+      <<: *common-variables
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:3000/" ]
 
@@ -34,8 +40,7 @@ services:
         condition: service_healthy
       auth:
         condition: service_healthy
-#    TODO: uncomment
-#    environment:
-#      <<: *common-variables
+    environment:
+      <<: *common-variables
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
