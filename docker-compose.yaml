@@ -5,8 +5,6 @@ services:
     container_name: auth-service
     hostname: auth-service
     restart: always
-    ports:
-      - "8080:8080"
 #    environment:
 #      <<: *common-variables
     healthcheck:
@@ -18,8 +16,6 @@ services:
     container_name: api-service
     hostname: api-service
     restart: always
-    ports:
-      - "3000:3000"
     #    environment:
     #      <<: *common-variables
     healthcheck:
