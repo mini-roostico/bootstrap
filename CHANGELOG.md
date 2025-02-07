@@ -1,3 +1,19 @@
+## [1.0.1](https://github.com/mini-roostico/bootstrap/compare/1.0.0...1.0.1) (2025-02-07)
+
+### Dependency updates
+
+* **deps:** update actions/setup-node action to v4.2.0 ([ef6086c](https://github.com/mini-roostico/bootstrap/commit/ef6086c75def85b76e76408a2720ff4b555e9ddb))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.119 ([df01538](https://github.com/mini-roostico/bootstrap/commit/df01538f8ac3e02c5a8e3faa4835712e467be5a8))
+
+### Bug Fixes
+
+* removed ports from api and auth services ([44606ad](https://github.com/mini-roostico/bootstrap/commit/44606ad194c5c3a63aa5d39de1184bc39799f07a))
+
+### Build and continuous integration
+
+* added api and auth services to docker-compose.yaml ([bce6b2c](https://github.com/mini-roostico/bootstrap/commit/bce6b2cfa41be70cb695c7737f2e9294179e8e13))
+* **Mergify:** configuration update ([1b2c8cb](https://github.com/mini-roostico/bootstrap/commit/1b2c8cba729f9292dc1778bd10ad22d12de2988b))
+
 ## 1.0.0 (2025-01-31)
 
 ### Features
