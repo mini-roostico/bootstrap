@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/mini-roostico/bootstrap/compare/1.0.1...1.1.0) (2025-02-07)
+
+### Features
+
+* added common variables to docker-compose.yaml to handle host names and ports ([a1405c0](https://github.com/mini-roostico/bootstrap/commit/a1405c0978e648c319ec6093310e94193e00ddd0))
+
 ## [1.0.1](https://github.com/mini-roostico/bootstrap/compare/1.0.0...1.0.1) (2025-02-07)
 
 ### Dependency updates
