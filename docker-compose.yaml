@@ -7,8 +7,8 @@ x-common-variables: &common-variables
   REDIS_PORT: 6379
   MONGO_HOST: mongodb
   MONGO_PORT: 27017
-  AT_PRIVATE_KEY: /run/secrets/at_private.pem
-  RT_PRIVATE_KEY: /run/secrets/rt_private.pem
+  AT_PRIVATE: /run/secrets/at_private.pem
+  RT_PRIVATE: /run/secrets/rt_private.pem
 
 services:
   auth:
@@ -18,14 +18,16 @@ services:
     hostname: auth-service
     restart: always
     depends_on:
-      - mongodb
-      - redis
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     volumes:
       - "./secrets:/run/secrets:ro"
     environment:
       <<: *common-variables
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8180/"]
+      test: [ "CMD", "wget", "-q", "--spider", "http://auth-service:8180/health"]
 
   api:
     platform: linux/amd64
@@ -43,7 +45,7 @@ services:
     environment:
       <<: *common-variables
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:3000/" ]
+      test: [ "CMD", "wget", "-q", "--spider", "http://api-service:3000/health"]
 
   frontend-service:
     platform: linux/amd64
