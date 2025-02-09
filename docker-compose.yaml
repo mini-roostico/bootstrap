@@ -1,8 +1,14 @@
 x-common-variables: &common-variables
   AUTH_HOST: auth-service
-  AUTH_PORT: 8080
+  AUTH_PORT: 8180
   API_HOST: api-service
   API_PORT: 3000
+  REDIS_HOST: redis
+  REDIS_PORT: 6379
+  MONGO_HOST: mongodb
+  MONGO_PORT: 27017
+  AT_PRIVATE_KEY: /run/secrets/at_private.pem
+  RT_PRIVATE_KEY: /run/secrets/rt_private.pem
 
 services:
   auth:
@@ -11,10 +17,15 @@ services:
     container_name: auth-service
     hostname: auth-service
     restart: always
+    depends_on:
+      - mongodb
+      - redis
+    volumes:
+      - "./secrets:/run/secrets:ro"
     environment:
       <<: *common-variables
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      test: ["CMD", "curl", "-f", "http://localhost:8180/"]
 
   api:
     platform: linux/amd64
@@ -22,6 +33,13 @@ services:
     container_name: api-service
     hostname: api-service
     restart: always
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - "./secrets:/run/secrets:ro"
     environment:
       <<: *common-variables
     healthcheck:
@@ -44,3 +62,20 @@ services:
       <<: *common-variables
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+
+  # Redis service, used for api rate limiting
+  redis:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
