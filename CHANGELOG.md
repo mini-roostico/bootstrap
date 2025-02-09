@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/mini-roostico/bootstrap/compare/1.1.0...1.2.0) (2025-02-09)
+
+### Features
+
+* added all services to docker-compose.yaml ([91a24c7](https://github.com/mini-roostico/bootstrap/commit/91a24c71d4b31691c7ba716c5be96bcc39b14521))
+
 ## [1.1.0](https://github.com/mini-roostico/bootstrap/compare/1.0.1...1.1.0) (2025-02-07)
 
 ### Features
