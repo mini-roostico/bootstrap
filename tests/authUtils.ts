@@ -1,5 +1,7 @@
 import {expect, Page} from "@playwright/test";
 
+const delay: number = 100;
+
 /**
  * Performs registration starting from `http://localhost:80/` with the given credentials.
  * @param page playwright page
@@ -10,7 +12,7 @@ import {expect, Page} from "@playwright/test";
  */
 export async function register(page: Page, email: string, firstName: string, lastName: string, password: string) {
     await page.goto("http://localhost:80/")
-    await page.getByText("Sign up").first().click({delay: 70})
+    await page.getByText("Sign up").first().click({delay: delay})
     await page.fill('[id="email"]', email)
     await page.fill('[id="firstName"]', firstName)
     await page.fill('[id="lastName"]', lastName)
@@ -42,13 +44,13 @@ export async function login(page: Page, email: string, firstName: string, passwo
  * @param name name of the user
  */
 export async function checkHasLogin(page: Page, email: string, name: string) {
-    await page.click('[class=user-avatar-dropdown]', {delay: 70})
+    await page.click('[class=user-avatar-dropdown]', {delay: delay})
     await expect(page.locator('.user-name').getByText(name).first()).toBeVisible()
     await expect(page).toHaveURL('http://localhost:80/sources')
     expect(await page.evaluate(() => sessionStorage.getItem('accessToken'))).toBeDefined();
     expect(await page.evaluate(() => sessionStorage.getItem('refreshToken'))).toBeDefined();
     expect(await page.evaluate(() => sessionStorage.getItem('username'))).toBe(email)
-    await page.click('[class=user-avatar-dropdown]', {delay: 70})
+    await page.click('[class=user-avatar-dropdown]', {delay: delay})
 }
 
 /**
@@ -56,8 +58,8 @@ export async function checkHasLogin(page: Page, email: string, name: string) {
  * @param page playwright page
  */
 export async function logout(page: Page) {
-    await page.click('[class=user-avatar-dropdown]', {delay: 70})
-    await page.locator('.dropdown-item', { hasText: 'Logout' }).first().click({delay: 70});
+    await page.click('[class=user-avatar-dropdown]', {delay: delay})
+    await page.locator('.dropdown-item', { hasText: 'Logout' }).first().click({delay: delay});
     await page.waitForTimeout(4000);
 }
 
