@@ -16,7 +16,7 @@
     "prettier": "^3.4.2",
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.1",
-    "semantic-release-preconfigured-conventional-commits": "1.1.119"
+    "semantic-release-preconfigured-conventional-commits": "1.1.122"
   },
   "scripts": {
     "lint:fix": "cd tests eslint src/ --fix",
