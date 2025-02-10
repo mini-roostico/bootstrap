@@ -26,6 +26,7 @@ services:
       - "./secrets:/run/secrets:ro"
     environment:
       <<: *common-variables
+      DOCS: /usr/src/app/auth/swagger.json
     healthcheck:
       test: [ "CMD", "wget", "-q", "--spider", "http://auth-service:8180/health"]
 
@@ -44,6 +45,7 @@ services:
       - "./secrets:/run/secrets:ro"
     environment:
       <<: *common-variables
+      DOCS: /usr/src/app/api/swagger.json
     healthcheck:
       test: [ "CMD", "wget", "-q", "--spider", "http://api-service:3000/health" ]
 
