@@ -36,7 +36,13 @@ export async function login(page: Page, email: string, firstName: string, passwo
     await checkHasLogin(page, email, firstName)
 }
 
-async function checkHasLogin(page: Page, email: string, name: string) {
+/**
+ * Checks if the login was successful.
+ * @param page playwright page
+ * @param email email of the user
+ * @param name name of the user
+ */
+export async function checkHasLogin(page: Page, email: string, name: string) {
     await page.click('[class=user-avatar-dropdown]')
     await expect(page.locator('.user-name').getByText(name).first()).toBeVisible()
     await expect(page).toHaveURL('http://localhost:80/sources')
@@ -56,7 +62,11 @@ export async function logout(page: Page) {
     await page.waitForTimeout(4000);
 }
 
-async function checkHasLogout(page: Page) {
+/**
+ * Checks if the logout was successful.
+ * @param page playwright page
+ */
+export async function checkHasLogout(page: Page) {
     expect(await page.evaluate(() => sessionStorage.getItem('accessToken'))).toBeNull();
     expect(await page.evaluate(() => sessionStorage.getItem('refreshToken'))).toBeNull();
     expect(await page.evaluate(() => sessionStorage.getItem('username'))).toBeNull()
