@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/mini-roostico/bootstrap/compare/1.2.0...1.3.0) (2025-02-09)
+
+### Features
+
+* added working health checks, fixed paths for keys ([70b8f13](https://github.com/mini-roostico/bootstrap/commit/70b8f134ffef44b0c2fe325cde6441f4575a432c))
+
 ## [1.2.0](https://github.com/mini-roostico/bootstrap/compare/1.1.0...1.2.0) (2025-02-09)
 
 ### Features
