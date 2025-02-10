@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/mini-roostico/bootstrap/compare/1.5.0...1.5.1) (2025-02-10)
+
+### Bug Fixes
+
+* fixed missing environments with new image versions ([f0bc7a3](https://github.com/mini-roostico/bootstrap/commit/f0bc7a33d722c9618a9f305c0eb7ad58c560d54d))
+
 ## [1.5.0](https://github.com/mini-roostico/bootstrap/compare/1.4.0...1.5.0) (2025-02-10)
 
 ### Features
