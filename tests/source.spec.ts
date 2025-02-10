@@ -98,5 +98,4 @@ test.describe.serial('Source creation, deletion and rename', () => {
         await checkHasSource(page, "Source 2", 0)
         await checkHasNoSource(page)
     })
-
 })
