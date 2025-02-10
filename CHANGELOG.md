@@ -1,3 +1,22 @@
+## [1.6.1](https://github.com/mini-roostico/bootstrap/compare/1.6.0...1.6.1) (2025-02-10)
+
+### Bug Fixes
+
+* added short delay in clicks ([69da3c5](https://github.com/mini-roostico/bootstrap/commit/69da3c52d31445f1b50d39f6eb727fc9d8d3b038))
+* fixed create source failing by adding short timeout ([f29291a](https://github.com/mini-roostico/bootstrap/commit/f29291abe01ea613bb307387e3e325c23d4ed3ab))
+
+### Tests
+
+* added tests for sources CRUD operation ([55397f4](https://github.com/mini-roostico/bootstrap/commit/55397f43fbcfed8c6c069242484788bee0ca5f09))
+
+### General maintenance
+
+* removed whitespace ([3bea9ef](https://github.com/mini-roostico/bootstrap/commit/3bea9efa5c18064c8a6dc7dc973ddcdcf1c60faa))
+
+### Refactoring
+
+* extracted utility functions to external files ([6853385](https://github.com/mini-roostico/bootstrap/commit/68533850b1cd3618cafe05db99ac4201e929ce6b))
+
 ## [1.6.0](https://github.com/mini-roostico/bootstrap/compare/1.5.1...1.6.0) (2025-02-10)
 
 ### Features
