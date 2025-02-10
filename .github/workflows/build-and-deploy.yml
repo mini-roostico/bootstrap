@@ -28,6 +28,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+      - name: Set up keys
+        run: |
+          mkdir -p secrets
+          echo "${{ secrets.AT_PRIVATE }}" > secrets/at_private.pem
+          echo "${{ secrets.AT_PUBLIC }}" > secrets/at_public.pem
+          echo "${{ secrets.RT_PRIVATE }}" > secrets/rt_private.pem
+          echo "${{ secrets.RT_PUBLIC }}" > secrets/rt_public.pem
       - name: Set up Docker Compose
         uses: hoverkraft-tech/compose-action@v2.2.0
       - name: Install dependencies
@@ -55,7 +62,8 @@ jobs:
       - test
     if: |
       always() &&
-      needs.check-secrets.outputs.run-with-secrets == 'true'
+      needs.check-secrets.outputs.run-with-secrets == 'true' &&
+      needs.test.result == 'success'
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
