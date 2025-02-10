@@ -45,7 +45,7 @@ services:
     environment:
       <<: *common-variables
     healthcheck:
-      test: [ "CMD", "wget", "-q", "--spider", "http://api-service:3000/health"]
+      test: [ "CMD", "wget", "-q", "--spider", "http://api-service:3000/health" ]
 
   frontend-service:
     platform: linux/amd64
@@ -63,7 +63,7 @@ services:
     environment:
       <<: *common-variables
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:80/"]
 
   mongodb:
     image: mongo
