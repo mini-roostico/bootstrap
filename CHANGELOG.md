@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/mini-roostico/bootstrap/compare/1.3.0...1.4.0) (2025-02-10)
+
+### Features
+
+* added health check for frontend ([a37c063](https://github.com/mini-roostico/bootstrap/commit/a37c063eff8587f2177d264076a3d0b11c0f9b7c))
+
 ## [1.3.0](https://github.com/mini-roostico/bootstrap/compare/1.2.0...1.3.0) (2025-02-09)
 
 ### Features
