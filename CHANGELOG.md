@@ -1,3 +1,25 @@
+## [1.6.0](https://github.com/mini-roostico/bootstrap/compare/1.5.1...1.6.0) (2025-02-10)
+
+### Features
+
+* run npm init playwright@latest ([6d12a70](https://github.com/mini-roostico/bootstrap/commit/6d12a700ee13f2fa26f7ca861ebafa073b5c0e75))
+
+### Tests
+
+* added initial specs for auth ([6ae10fb](https://github.com/mini-roostico/bootstrap/commit/6ae10fbe9dddec452a47d9f23ec31ece17573bc4))
+
+### Build and continuous integration
+
+* added dependency for success job ([17f2052](https://github.com/mini-roostico/bootstrap/commit/17f20524e3485d49e2fbf82e2e031d68ed85fdd2))
+* added setup for keys ([c451e27](https://github.com/mini-roostico/bootstrap/commit/c451e27d41e059eff69c8de851c01cf5d55aeada))
+* added test action with playwright and docker compose ([60a9e32](https://github.com/mini-roostico/bootstrap/commit/60a9e32d02e0f8b827e9274801647256f20608b4))
+
+### General maintenance
+
+* deleted auto-generated action by playwright ([c3dcd3f](https://github.com/mini-roostico/bootstrap/commit/c3dcd3faec6504a5038f2d0d2747ef3bd1973773))
+* deleted example tests ([0ccc160](https://github.com/mini-roostico/bootstrap/commit/0ccc160a9e7b6f56369470f15bf0b38fc4c9f887))
+* renamed docker-compose.yml ([4a8cefc](https://github.com/mini-roostico/bootstrap/commit/4a8cefc587cf1611f5021ce467e6cd4ae41eef80))
+
 ## [1.5.1](https://github.com/mini-roostico/bootstrap/compare/1.5.0...1.5.1) (2025-02-10)
 
 ### Bug Fixes
