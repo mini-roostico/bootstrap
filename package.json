@@ -10,9 +10,18 @@
     "url": "https://github.com/mini-roostico/bootstrap/issues"
   },
   "devDependencies": {
+    "eslint": "^9.20.0",
+    "eslint-config-prettier": "^10.0.1",
+    "pre-commit": "^1.0.10",
+    "prettier": "^3.4.2",
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.1",
     "semantic-release-preconfigured-conventional-commits": "1.1.119"
   },
-  "scripts": {}
+  "scripts": {
+    "lint:fix": "cd tests eslint src/ --fix",
+    "lint:check": "cd tests eslint src/",
+    "format:write": "cd tests prettier --write src/",
+    "format:check": "cd tests prettier --check src/"
+  }
 }
