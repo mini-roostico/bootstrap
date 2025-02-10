@@ -24,6 +24,7 @@ test.describe.serial('Source creation, deletion and rename', () => {
         const email = baseEmail + browserName + "@example.com"
         await login(page, email, "John", "StrongPass123!")
         await renameSource(page, "Source 1", "Source 2")
+        await page.waitForTimeout(1000);
         await checkHasSource(page, "Source 2")
     })
 
@@ -31,6 +32,7 @@ test.describe.serial('Source creation, deletion and rename', () => {
         const email = baseEmail + browserName + "@example.com"
         await login(page, email, "John", "StrongPass123!")
         await deleteSource(page, "Source 2")
+        await page.waitForTimeout(1000);
         await checkHasSource(page, "Source 2", 0)
         await checkHasNoSource(page)
     })
