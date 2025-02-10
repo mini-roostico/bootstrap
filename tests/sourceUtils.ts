@@ -9,6 +9,7 @@ export async function createSource(page: Page, name: string) {
     await page.getByText('New Source').click()
     await page.fill('input[placeholder="Enter the name of the new source"]', name)
     await page.click('button[type="submit"]')
+    await page.waitForTimeout(1000);
     await checkHasSource(page, name)
 }
 
