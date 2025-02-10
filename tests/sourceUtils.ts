@@ -1,14 +1,16 @@
 import {expect, Page} from "@playwright/test";
 
+const delay: number = 100;
+
 /**
  * Creates a new source with the given name.
  * @param page playwright page
  * @param name name of the source
  */
 export async function createSource(page: Page, name: string) {
-    await page.getByText('New Source').click({delay: 70})
+    await page.getByText('New Source').click({delay: delay})
     await page.fill('input[placeholder="Enter the name of the new source"]', name)
-    await page.click('button[type="submit"]', {delay: 70})
+    await page.click('button[type="submit"]', {delay: delay})
     await page.waitForTimeout(1000);
     await checkHasSource(page, name)
 }
@@ -23,8 +25,8 @@ export async function selectDropdownOptionForSource(page: Page, name: string, op
     const card = page
         .locator('div.card-body')
         .filter({ has: page.locator('h5', { hasText: name }) });
-    await card.locator('.dropdown').click({delay: 70});
-    await card.locator(`a.dropdown-item`, { hasText: optionText }).click({delay: 70});
+    await card.locator('.dropdown').click({delay: delay});
+    await card.locator(`a.dropdown-item`, { hasText: optionText }).click({delay: delay});
 }
 
 /**
@@ -36,7 +38,7 @@ export async function selectDropdownOptionForSource(page: Page, name: string, op
 export async function renameSource(page: Page, oldName: string, newName: string) {
     await selectDropdownOptionForSource(page, oldName, "Change Name");
     await page.fill('input[placeholder="Enter additional details"]', newName);
-    await page.click('button[type="submit"]', {delay: 70});
+    await page.click('button[type="submit"]', {delay: delay});
 }
 
 /**
@@ -46,7 +48,7 @@ export async function renameSource(page: Page, oldName: string, newName: string)
  */
 export async function deleteSource(page: Page, name: string) {
     await selectDropdownOptionForSource(page, name, "Delete");
-    await page.click('button[type="submit"]', {delay: 70});
+    await page.click('button[type="submit"]', {delay: delay});
 }
 
 /**
