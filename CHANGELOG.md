@@ -1,3 +1,13 @@
+## [1.5.0](https://github.com/mini-roostico/bootstrap/compare/1.4.0...1.5.0) (2025-02-10)
+
+### Features
+
+* added scripts for generating keys ([67c4644](https://github.com/mini-roostico/bootstrap/commit/67c4644ee6c9eeff99c9136b91f8d6dc1777947d))
+
+### Documentation
+
+* added instructions for the entire deployment process ([9d75d3a](https://github.com/mini-roostico/bootstrap/commit/9d75d3affdcc2580dec2a153d1e6f59b41ec1452))
+
 ## [1.4.0](https://github.com/mini-roostico/bootstrap/compare/1.3.0...1.4.0) (2025-02-10)
 
 ### Features
